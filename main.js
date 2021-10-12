@@ -1,6 +1,6 @@
 const images = [
-  "https://cdn.glitch.me/975d1c2a-4788-4aff-bf0c-2c012aafb369%2Fphrase5%402x.png?v=1633736883545",
-  "https://cdn.glitch.me/975d1c2a-4788-4aff-bf0c-2c012aafb369%2Fphrase1%402x.png?v=1633736865482"
+  "assets/phrase1@2x.png",
+  "assets/phrase5@2x.png"
 ];
 
 $('#enter-button').click(enter);
