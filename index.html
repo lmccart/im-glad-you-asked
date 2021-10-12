@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="favicon.ico" />
+
+ 
+
+    <title>I'm glad you asked</title>
+
+    <script src="/jquery-3.6.0.min.js"></script>
+    <script src="/jslib-html5-camera-photo.min.js"></script>
+
+    <link rel="stylesheet" href="/style.css" />
+
+  </head>
+  <body>
+    <section id="intro">
+      <div class="holder">
+        <h1>I'm glad you asked</h1>
+        <button id="enter-button">Enter</button>
+        <button class="help-button">?</button>
+      </div>
+    </section>
+    
+    <section id="main" style="display:none">
+      <button class="help-button">?</button>
+      <video id="cam" autoplay="true"></video>
+      <img id="phrase" src="">
+    </section>
+    
+    <section id="help" style="display:none">
+      <button id="back-button">←</button>
+    </section>
+    <script src="/main.js"></script>
+  </body>
+</html>
