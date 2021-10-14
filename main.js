@@ -48,4 +48,5 @@ function initPhrase() {
   let n = Number(window.location.hash.substring(1));
   console.log(n);
   $('#phrase').attr('src', images[n]);
+  $('#debug').html(n);
 }

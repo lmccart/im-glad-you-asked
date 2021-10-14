@@ -80,3 +80,14 @@ section {
   left: 1em;
   z-index: 3;
 }
+
+#debug {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 10em;
+  color: red;
+  z-index: 100;
+  text-align: center;
+}
