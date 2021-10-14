@@ -17,10 +17,10 @@
 
   </head>
   <body>
-    <div id='debug'>#</div>
+    <!-- <div id='debug'>#</div> -->
     <section id="intro">
       <div class="holder">
-        <h1 data-i18n="title"></h1>
+        <h1 data-i18n="introTitle"></h1>
         <button id="enter-button" data-i18n="introEnter"></button>
       </div>
     </section>
@@ -32,12 +32,16 @@
     
     <section id="help" style="display:none">
       <div class="wrapper">
-        <h1 data-i18n="title"></h1>
+        <h1 data-i18n="helpTitle"></h1>
         <h2 data-i18n="artist"></h2>
         <h2 data-i18n="designer"></h2>
         <div data-i18n="helpDescript"></div>
 
       </div>
+    </section>
+
+    <section id="error" style="display:none">
+      <p>Sorry, there was an error or the browser on your device cannot open this work.<br><br>Please try reloading and be sure to allow camera.</p>
     </section>
 
     <footer>
