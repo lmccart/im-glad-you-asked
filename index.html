@@ -20,21 +20,31 @@
     <div id='debug'>#</div>
     <section id="intro">
       <div class="holder">
-        <h1>I'm glad you asked</h1>
-        <button id="enter-button">Enter</button>
-        <button class="help-button">?</button>
+        <h1 data-i18n="title"></h1>
+        <button id="enter-button" data-i18n="introEnter"></button>
       </div>
     </section>
     
     <section id="main" style="display:none">
-      <button class="help-button">?</button>
       <video id="cam" autoplay="true"></video>
       <img id="phrase" src="">
     </section>
     
     <section id="help" style="display:none">
-      <button id="back-button">←</button>
+      <div class="wrapper">
+        <h1 data-i18n="title"></h1>
+        <h2 data-i18n="artist"></h2>
+        <h2 data-i18n="designer"></h2>
+        <div data-i18n="helpDescript"></div>
+
+      </div>
     </section>
+
+    <footer>
+        <button id="help-button">?</button>
+        <button id="lang-button" data-i18n="lang"></button>
+
+    </footer>
     <script src="main.js?v=0.1"></script>
   </body>
 </html>
