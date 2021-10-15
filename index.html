@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="favicon.ico" />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
 
  
 
@@ -30,11 +32,12 @@
       <img id="phrase" src="">
     </section>
     
-    <section id="help" style="display:none">
+    <section id="help" style="display:block">
       <div class="wrapper">
         <h1 data-i18n="helpTitle"></h1>
         <h2 data-i18n="artist"></h2>
         <h2 data-i18n="designer"></h2>
+        <div id='map'></div>
         <div data-i18n="helpDescript"></div>
 
       </div>

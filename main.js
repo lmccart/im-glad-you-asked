@@ -48,8 +48,55 @@ $('#lang-button').click(changeLang)
 $( window ).bind('hashchange', init);
 $( window ).resize(resizeCam);
 
+console.log('hi')
+mapboxgl.accessToken = 'pk.eyJ1IjoibGF1cmVubGVlbWFjayIsImEiOiJja3BjMWJmMDcwNzh3MnBtbHIxeHIwMWgwIn0.7y2mRzNJ7IS467f_-ZHSFg'; 
+var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/laurenleemack/ckureka3wd7cv18mscxbm9m6z',
+  center: [-122.4065303925001, 37.79458422321932],
+  zoom: 15.5
+});
+map.on('click', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['glad-you-asked']
+  });
+  if (!features.length) {
+    return;
+  }
+  var feature = features[0];
+  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+  .setLngLat(feature.geometry.coordinates)
+  .setHTML(
+    '<h3>' + feature.properties.phrase + '</h3>')
+  .addTo(map);
+
+});
+map.on('mousemove', function(e) {
+  console.log("mousemove")
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['glad-you-asked']
+  });
+  if (!features.length) {     
+    map.getCanvas().style.cursor = 'grab';
+  } else {
+    map.getCanvas().style.cursor = 'pointer';
+  }
+
+});
+
+
+
+
+
+
+
+
+
+
+
 resize();
 init();
+
 
 function enter() {
   $('#enter-button').text('Loading');
