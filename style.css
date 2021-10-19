@@ -183,6 +183,10 @@ a {
   text-decoration: none;
 }
 
+a:hover, #lang-button:hover {
+  color: #FF5959;
+}
+
 #error {
   background: black;
   color: white;
@@ -205,17 +209,20 @@ p {
 }
 
 footer {
-  z-index: 10;
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
+  z-index: 10;
+  pointer-events: none;
 }
 
 footer button {
   color: white;
   margin: 0.5em;
   font-size: 1em;
+  cursor: pointer;
+  pointer-events: all;
 }
 
 #lang-button {
