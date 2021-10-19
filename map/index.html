@@ -4,41 +4,25 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="../favicon.ico" />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
 
- 
-
     <title>I'm glad you asked</title>
 
-    <script src="jquery-3.6.0.min.js"></script>
-    <script src="jslib-html5-camera-photo.min.js"></script>
+    <script src="../jquery-3.6.0.min.js"></script>
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../style.css" />
 
   </head>
   <body>
-    <!-- <div id='debug'>#</div> -->
-    <section id="intro" class="flex-section">
-      <div class="holder">
-        <h1 data-i18n="introTitle"></h1>
-        <button id="enter-button" data-i18n="introEnter"></button>
-      </div>
-    </section>
-    
-    <section id="main" class="flex-section" style="display:none">
-      <video id="cam" autoplay="true"></video>
-      <img id="phrase" src="">
-    </section>
-    
-    <section id="help" style="display:none">
+    <section id="help">
       <div class="wrapper">
         <h1 data-i18n="helpTitle"></h1>
 
         <div class="help-content flex-section">
           <div class="wrapper">
-            <div id="map"></div>
+            <div id="map-all"></div>
             <div data-i18n="helpDescript" id='help-descript'></div>
             <div id="credits">
               <a href="https://lauren-mccarthy.com" target="_blank" data-i18n="lauren"></a><br>
@@ -50,15 +34,10 @@
       </div>
     </section>
 
-    <section id="error" style="display:none" class="flex-section">
-      <p>Sorry, there was an error or the browser on your device cannot open this work.<br><br>Please try reloading and be sure to allow camera.</p>
-    </section>
-
     <footer>
-        <button id="help-button">?</button>
         <button id="lang-button" data-i18n="lang"></button>
 
     </footer>
-    <script src="main.js?v=0.1"></script>
+    <script src="map.js?v=0.1"></script>
   </body>
 </html>

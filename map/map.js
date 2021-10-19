@@ -1,30 +1,3 @@
-const images = [
-  'assets/phrase1_@.png',
-  'assets/phrase5_@.png',
-  'assets/phrase5_@.png',
-  'assets/phrase5_@.png',
-  'assets/phrase5_@.png',
-  'assets/phrase5_@.png',
-  'assets/phrase5_@.png',
-  'assets/phrase5_@.png',
-  'assets/phrase5_@.png'
-];
-
-const alts = [
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for'
-];
 
 
 const translations = {
@@ -40,18 +13,10 @@ const translations = {
 
 
 let lang = 'en';
-let camera;
 
-$('#enter-button').click(enter);
-$('#help-button').click(toggleHelp);
-$('#lang-button').click(changeLang);
-$( window ).bind('hashchange', init);
-$( window ).resize(resizeCam);
-
-console.log('hi')
 mapboxgl.accessToken = 'pk.eyJ1IjoibGF1cmVubGVlbWFjayIsImEiOiJja3BjMWJmMDcwNzh3MnBtbHIxeHIwMWgwIn0.7y2mRzNJ7IS467f_-ZHSFg'; 
-var map = new mapboxgl.Map({
-  container: 'map',
+let map = new mapboxgl.Map({
+  container: 'map-all',
   style: 'mapbox://styles/laurenleemack/ckux7p8dhtlj917pjne0p7tr2',
   center: [-122.4065303925001, 37.79358422321932],
   zoom: 15
@@ -91,55 +56,17 @@ map.on('load', () => {
 
 
 
-
-
-
-
-
-
-
+$( window ).resize(resize);
+$('#lang-button').click(changeLang);
 resize();
-init();
+initLang();
 
 
 function enter() {
   $('#enter-button').text('Loading');
   $('#enter-button').addClass('fade');
   $('#enter-button').prop('disabled', true);
-  startCam();
 
-}
-
-function startCam() {
-  let videoElement = document.getElementById('cam');
-  camera = new JslibHtml5CameraPhoto.default(videoElement);
-  camera.startCameraMaxResolution(JslibHtml5CameraPhoto.FACING_MODES.ENVIRONMENT)
-  .then((stream)=>{
-    console.log('Camera started');
-    resizeCam();
-    videoElement.addEventListener('playing', showMain);
-  })
-  .catch((error)=>{
-    console.log('Camera failed');
-    $('#error').show();
-  });
-}
-
-function showMain() {
-  $('#intro').hide();
-  $('#main').show();
-  $('#help').hide();
-}
-
-function toggleHelp() {
-  console.log($('#help').is(':visible'))
-  if ($('#help').is(':visible')) {
-    $('#help').hide();
-    $('#help-button').html('?');
-  } else {
-    $('#help').show();
-    $('#help-button').html('←');
-  }
 }
 
 function changeLang() {
@@ -148,18 +75,9 @@ function changeLang() {
   } else {
     lang = 'en';
   }
-  init();
-}
-
-function init() {
-  let n = Number(window.location.hash.substring(1));
-  console.log(n);
-  let path = images[n].replace('@', lang);
-  $('#phrase').attr('src', path);
-  $('#phrase').attr('alt', alts[n]);
-  $('#debug').html(n);
   initLang();
 }
+
 
 function initLang() {
   let n = lang === 'en' ? 0 : 1;
@@ -175,27 +93,4 @@ function resize() {
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
   if (map) map.resize();
-}
-
-function resizeCam() {
-  if (!camera) return;
-  let cameraSettings = camera.getCameraSettings();
-  if (cameraSettings) {
-    let ww = window.innerWidth, wh = window.innerHeight;
-    let ca = cameraSettings.aspectRatio, cw = cameraSettings.width, ch = cameraSettings.height;
-    if (cw / ch > ww / wh) {
-      $('#cam').height(wh);
-      $('#cam').width(ca * wh);
-      $('#cam').css('top', 0);
-      $('#cam').css('left', -0.5 * (cw - ww));
-
-    } else {
-      $('#cam').width(ww);
-      $('#cam').height(ww / ca);
-      $('#cam').css('top', -0.5 * (ch - wh));
-      $('#cam').css('left', 0);
-    }
-    console.log(cw, ch, ca, ww, wh)
-  }
-  resize();
 }
