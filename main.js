@@ -1,29 +1,27 @@
 const images = [
-  'assets/phrase1_@.png',
-  'assets/phrase5_@.png',
-  'assets/phrase5_@.png',
-  'assets/phrase5_@.png',
-  'assets/phrase5_@.png',
-  'assets/phrase5_@.png',
-  'assets/phrase5_@.png',
-  'assets/phrase5_@.png',
-  'assets/phrase5_@.png'
+  'assets/cmac-1-@.png',
+  'assets/cmac-2-@.png',
+  'assets/cmac-3-@.png',
+  'assets/cmac-4-@.png',
+  'assets/cmac-5-@.png',
+  'assets/cmac-6-@.png',
+  'assets/cmac-7-@.png',
+  'assets/cmac-8-@.png',
+  'assets/cmac-9-@.png',
+  'assets/cmac-10-@.png'
 ];
 
 const alts = [
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for',
-  'These seats are reserved for'
+  'This area is reserved for people who see the future in the past',
+  'This bench is reserved for people who have family many hours away',
+  'This area is reserved for people who have a lot of questions',
+  'This area is reserved for people who are missing someone',
+  'This bench is reserved for people who are feeling overwhelmed',
+  'These seats are reserved for people who have something to say',
+  'These seats are reserved for people who are seen',
+  'This area is reserved for people that are finding home',
+  'These seats are reserved for people with lots of dreams',
+  'This area is for someone that likes to be alone'
 ];
 
 
