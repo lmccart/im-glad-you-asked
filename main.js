@@ -111,7 +111,7 @@ function enter() {
 function startCam() {
   let videoElement = document.getElementById('cam');
   camera = new JslibHtml5CameraPhoto.default(videoElement);
-  camera.startCameraMaxResolution(JslibHtml5CameraPhoto.FACING_MODES.ENVIRONMENT)
+  camera.startCamera(JslibHtml5CameraPhoto.FACING_MODES.ENVIRONMENT)
   .then((stream)=>{
     console.log('Camera started');
     resizeCam();
