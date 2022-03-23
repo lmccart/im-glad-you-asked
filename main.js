@@ -115,15 +115,18 @@ function startCam() {
   .then((stream)=>{
     console.log('Camera started');
     resizeCam();
-    videoElement.addEventListener('playing', showMain);
+    videoElement.addEventListener('canplay', showMain);
+    // videoElement.addEventListener('playing', showMain);
   })
   .catch((error)=>{
-    console.log('Camera failed');
+    console.log('Camera failedd');
+    console.log(error)
     $('#error').show();
   });
 }
 
 function showMain() {
+  console.log('showmain')
   $('#intro').hide();
   $('#main').show();
   $('#help').hide();
@@ -179,8 +182,9 @@ function resizeCam() {
   if (!camera) return;
   let cameraSettings = camera.getCameraSettings();
   if (cameraSettings) {
+    console.log(cameraSettings)
     let ww = window.innerWidth, wh = window.innerHeight;
-    let ca = cameraSettings.aspectRatio, cw = cameraSettings.width, ch = cameraSettings.height;
+    let cw = cameraSettings.width, ch = cameraSettings.height, ca = cw/ch;
     if (cw / ch > ww / wh) {
       $('#cam').height(wh);
       $('#cam').width(ca * wh);
