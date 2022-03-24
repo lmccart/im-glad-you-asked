@@ -48,6 +48,11 @@ $('#lang-button').click(changeLang);
 $( window ).bind('hashchange', init);
 $( window ).resize(resizeCam);
 
+$('body').on('click', () => {
+  $('#cam')[0].play();
+  console.log('play')
+})
+
 console.log('hi')
 mapboxgl.accessToken = 'pk.eyJ1IjoibGF1cmVubGVlbWFjayIsImEiOiJja3BjMWJmMDcwNzh3MnBtbHIxeHIwMWgwIn0.7y2mRzNJ7IS467f_-ZHSFg'; 
 var map = new mapboxgl.Map({
