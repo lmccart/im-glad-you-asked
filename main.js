@@ -110,7 +110,7 @@ function enter() {
 async function startCam(e) {
   try {
     console.log('connecting user media');
-    const stream = await navigator.mediaDevices.getUserMedia({video:true, audio:false});
+    const stream = await navigator.mediaDevices.getUserMedia({video:true, audio:false, facingMode: { exact: 'environment' }});
 
     let videoEl = $('#cam');
     console.log('connected user media');
