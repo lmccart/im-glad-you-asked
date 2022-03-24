@@ -39,6 +39,8 @@ const translations = {
 
 let lang = 'en';
 let camera;
+let ww = window.innerWidth, wh = window.innerHeight;
+let cw, ch;
 
 $('#enter-button').click(enter);
 $('#help-button').click(toggleHelp);
@@ -87,15 +89,6 @@ map.on('load', () => {
 });
 
 
-
-
-
-
-
-
-
-
-
 resize();
 init();
 
@@ -108,21 +101,27 @@ function enter() {
 
 }
 
-function startCam() {
-  let videoElement = document.getElementById('cam');
-  camera = new JslibHtml5CameraPhoto.default(videoElement);
-  camera.startCamera(JslibHtml5CameraPhoto.FACING_MODES.ENVIRONMENT)
-  .then((stream)=>{
-    console.log('Camera started');
-    resizeCam();
-    videoElement.addEventListener('canplay', showMain);
-    // videoElement.addEventListener('playing', showMain);
-  })
-  .catch((error)=>{
-    console.log('Camera failedd');
-    console.log(error)
+
+async function startCam(e) {
+  try {
+    console.log('connecting user media');
+    const stream = await navigator.mediaDevices.getUserMedia({video:true, audio:false});
+
+    let videoEl = $('#cam');
+    console.log('connected user media');
+    videoEl[0].srcObject = stream;
+    videoEl.on('loadedmetadata', e => {
+      console.log('camera started');
+      cw = videoEl[0].videoWidth, ch = videoEl[0].videoHeight;
+      resizeCam();
+      showMain();
+    });
+    
+  } catch (e) {
+    console.log('camera failed');
+    console.log(e)
     $('#error').show();
-  });
+  }
 }
 
 function showMain() {
@@ -179,25 +178,18 @@ function resize() {
 }
 
 function resizeCam() {
-  if (!camera) return;
-  let cameraSettings = camera.getCameraSettings();
-  if (cameraSettings) {
-    console.log(cameraSettings)
-    let ww = window.innerWidth, wh = window.innerHeight;
-    let cw = cameraSettings.width, ch = cameraSettings.height, ca = cw/ch;
-    if (cw / ch > ww / wh) {
-      $('#cam').height(wh);
-      $('#cam').width(ca * wh);
-      $('#cam').css('top', 0);
-      $('#cam').css('left', -0.5 * (cw - ww));
-
-    } else {
-      $('#cam').width(ww);
-      $('#cam').height(ww / ca);
-      $('#cam').css('top', -0.5 * (ch - wh));
-      $('#cam').css('left', 0);
-    }
-    console.log(cw, ch, ca, ww, wh)
+  ca = cw/ch;
+  if (cw / ch > ww / wh) {
+    $('#cam').height(wh);
+    $('#cam').width(ca * wh);
+    $('#cam').css('top', 0);
+    $('#cam').css('left', -0.5 * (ca * wh - ww));
+  } else {
+    $('#cam').width(ww);
+    $('#cam').height(ww / ca);
+    $('#cam').css('top', -0.5 * (ww / ca - wh));
+    $('#cam').css('left', 0);
   }
+  console.log(cw, ch, ca, ww, wh);
   resize();
 }
