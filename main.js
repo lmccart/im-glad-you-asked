@@ -26,10 +26,10 @@ const alts = [
 
 
 const translations = {
-  introTitle: ['I\'m\nglad\nyou\nasked', '我很高兴你问'],
+  introTitle: ['I\'m\nglad\nyou\nasked', '很高兴你问我'],
   introEnter: ['Enter', '进入'],
   lang: ['中文', 'EN'],
-  helpTitle: ['I\'m glad you asked', '我很高兴你问'],
+  helpTitle: ['I\'m glad you asked', '很高兴你问我'],
   helpDescript: ['I’m glad you asked augments the social landscape of Chinatown. Various sites are virtually labeled with phrases like “This seat is for people that are missing someone.” If you identify with the statements you may sit, inevitably mixing with unwitting visitors. In the process of determining why others are there, conversations may arise. “Excuse me, are you also missing someone?”',
                  '我很高兴你问了旧金山唐人街的分布，增加了该地区的社会景观。 各种网站都虚拟地贴上了诸如“这个座位是给需要被看到的人”之类的短语的标签。 或“这个座位是为想念某人的人准备的。” 认同这些陈述的访问者可能会坐着，不可避免地与只是坐着的不知情的访问者混在一起。 在确定对方在场原因的过程中，可能会出现自发的对话。 “请问，您也想念一个人吗？”'],
   lauren: ['Lauren Lee McCarthy', '劳伦·李·麦卡锡'],
@@ -48,12 +48,16 @@ $('#lang-button').click(changeLang);
 $( window ).bind('hashchange', init);
 $( window ).resize(resizeCam);
 
+let platform = navigator?.userAgentData?.platform || navigator?.platform || 'unknown';
+if (platform !== 'iPhone') {
+  $('#iphone-help').hide();
+}
+
 $('body').on('click', () => {
   $('#cam')[0].play();
   console.log('play')
 })
 
-console.log('hi')
 mapboxgl.accessToken = 'pk.eyJ1IjoibGF1cmVubGVlbWFjayIsImEiOiJja3BjMWJmMDcwNzh3MnBtbHIxeHIwMWgwIn0.7y2mRzNJ7IS467f_-ZHSFg'; 
 var map = new mapboxgl.Map({
   container: 'map',
